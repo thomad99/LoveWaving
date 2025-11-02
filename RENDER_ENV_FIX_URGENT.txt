@@ -1,0 +1,48 @@
+========================================
+URGENT: ADD MISSING ENVIRONMENT VARIABLE
+========================================
+
+From your debug output, I see:
+  "hasNextAuthUrl": false
+
+NEXTAUTH_URL is NOT set!
+
+========================================
+FIX IT NOW:
+========================================
+
+1. Go to Render Dashboard
+2. Click your service: lovewaving
+3. Go to "Environment" tab
+4. Add this environment variable:
+
+   Key: NEXTAUTH_URL
+   Value: https://lovewaving.onrender.com
+
+5. Click "Save Changes"
+6. Service will auto-restart
+
+========================================
+ALSO CHECK:
+========================================
+
+Make sure these exist:
+✓ DATABASE_URL (you have it)
+✓ NEXTAUTH_SECRET (you have it)
+✓ NEXTAUTH_URL (MISSING! ← ADD THIS!)
+✓ AWS_ACCESS_KEY_ID (for S3)
+✓ AWS_SECRET_ACCESS_KEY (for S3)
+✓ AWS_REGION (for S3)
+✓ AWS_S3_BUCKET_NAME (for S3)
+
+========================================
+AFTER ADDING:
+========================================
+
+1. Wait for restart (30 seconds)
+2. Go to /health page
+3. Click "Test Database" button
+4. Share results with me
+
+========================================
+
