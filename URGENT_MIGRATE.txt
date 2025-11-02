@@ -1,0 +1,23 @@
+========================================
+URGENT: CREATE DATABASE TABLES NOW
+========================================
+
+Your app is live at: https://lovewaving.onrender.com
+
+But it needs database tables!
+
+========================================
+DO THIS NOW:
+========================================
+
+1. Go to Render Dashboard
+2. Click your service: lovewaving
+3. Click "Shell" tab (left sidebar)
+4. Type: npx prisma db push
+5. Press Enter
+6. Wait for "✓ All done!"
+
+Then try your app!
+
+========================================
+
