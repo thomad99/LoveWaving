@@ -1,0 +1,54 @@
+========================================
+✅ DEBUG TOOLS ADDED
+========================================
+
+Pushed debug features to your health page!
+
+========================================
+NEW FEATURES ON /health PAGE:
+========================================
+
+1. "Test Database" button
+   - Checks database connection
+   - Lists all tables in your database
+   - Tries to access User and Event tables
+   - Shows detailed error messages
+
+2. "Debug Info" button
+   - Shows environment variables
+   - Displays database connection info
+   - No sensitive data exposed!
+
+========================================
+HOW TO USE:
+========================================
+
+1. Wait for Render to deploy (5-10 min)
+2. Visit: https://lovewaving.onrender.com/health
+3. Click "Test Database" button
+4. View the results in the debug output
+
+========================================
+WHAT TO LOOK FOR:
+========================================
+
+If database tables exist, you'll see:
+  ✓ "userTableAccess": "OK"
+  ✓ "eventTableAccess": "OK"
+  ✓ Table list with all your tables
+
+If tables don't exist, you'll see:
+  ✗ Error about tables not existing
+  ✗ Empty table list
+
+========================================
+NEXT STEPS:
+========================================
+
+After testing:
+1. Share the debug output with me
+2. I'll know exactly what's wrong
+3. Will fix it quickly!
+
+========================================
+
