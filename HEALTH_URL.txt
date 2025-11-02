@@ -1,0 +1,30 @@
+========================================
+HEALTH CHECK PAGE URL
+========================================
+
+After your app is deployed on Render:
+
+https://your-app-name.onrender.com/health
+
+or
+
+https://your-app-name.onrender.com/api/health (JSON only)
+
+========================================
+DIFFERENCE:
+========================================
+
+/health          = Beautiful web page with stats
+/api/health      = JSON API response (for monitoring)
+
+========================================
+EXAMPLE:
+========================================
+
+If your Render app is: lovewaving-abc123.onrender.com
+
+Then health page is:
+https://lovewaving-abc123.onrender.com/health
+
+========================================
+

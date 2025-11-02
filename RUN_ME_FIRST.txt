@@ -1,0 +1,61 @@
+========================================
+QUICK START - Sync to GitHub
+========================================
+
+OPTION 1: Double-click this file
+----------------------------------------
+1. Double-click: sync.bat
+2. Wait for it to run
+3. Enter your GitHub Personal Access Token when asked
+4. Done!
+
+OPTION 2: PowerShell
+----------------------------------------
+1. Right-click in folder
+2. Select "Open PowerShell here"
+3. Type: .\sync.ps1
+4. Press Enter
+5. Enter your GitHub credentials when asked
+6. Done!
+
+OPTION 3: GitHub Desktop (RECOMMENDED)
+----------------------------------------
+1. Download: https://desktop.github.com/
+2. Install and open
+3. Add this folder as repository
+4. Publish to GitHub
+5. Done! (Easiest method)
+
+========================================
+GET PERSONAL ACCESS TOKEN
+========================================
+You need a token, not your password!
+
+Steps:
+1. Go to: https://github.com/settings/tokens
+2. Click: "Generate new token (classic)"
+3. Name it: "LoveWaving"
+4. Check: "repo" scope
+5. Click: "Generate token"
+6. Copy the token
+7. Use it as your password when prompted
+
+========================================
+IMPORTANT
+========================================
+- Never share your token
+- Use token instead of password
+- If you have 2FA enabled, you MUST use a token
+- The token will work instead of your password
+
+========================================
+READY?
+========================================
+
+Double-click: sync.bat
+
+Or use GitHub Desktop (easiest):
+https://desktop.github.com/
+
+========================================
+

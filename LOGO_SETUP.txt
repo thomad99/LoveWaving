@@ -1,0 +1,61 @@
+========================================
+HOW TO ADD YOUR LOGO AS FAVICON
+========================================
+
+Your logo is perfect for a favicon!
+
+========================================
+SETUP STEPS:
+========================================
+
+1. Save your logo image in the app/ folder
+
+Rename it to exactly: icon.png
+
+Location:
+app/icon.png
+
+========================================
+NEXT.JS AUTO-DETECTION:
+========================================
+
+Next.js 14 automatically uses:
+- app/icon.png as the favicon
+- Shows in browser tabs
+- Works for all devices
+
+No code changes needed!
+
+========================================
+ALTERNATIVE: Use SVG
+========================================
+
+If you have SVG version:
+
+1. Save as: app/icon.svg
+2. Or: app/icon.png
+
+Next.js will automatically use it!
+
+========================================
+SIZES NEEDED:
+========================================
+
+For best results:
+- PNG: 512x512 pixels (square)
+- SVG: Any size (scalable)
+- Format: PNG or SVG
+
+Your logo should work great!
+
+========================================
+VERIFY IT WORKS:
+========================================
+
+After adding icon.png:
+1. Build the app
+2. Check browser tab
+3. You'll see your sailboat logo!
+
+========================================
+

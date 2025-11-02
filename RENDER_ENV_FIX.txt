@@ -1,0 +1,61 @@
+========================================
+URGENT: Add Missing Environment Variable
+========================================
+
+Your app is running but NEXT_AUTH_SECRET is missing!
+
+========================================
+FIX THIS NOW:
+========================================
+
+Go to Render Dashboard:
+1. Click your web service
+2. Click "Environment" tab
+3. Add this variable:
+
+Key: NEXTAUTH_SECRET
+Value: (generate a random string)
+
+========================================
+GENERATE SECRET:
+========================================
+
+In Render Shell or your terminal:
+
+Option 1: Use Render Shell
+- Go to your service → Shell
+- Run: openssl rand -base64 32
+- Copy the output
+
+Option 2: Use online generator
+- Go to: https://generate-secret.vercel.app/32
+- Copy the generated secret
+
+Option 3: Use PowerShell
+- Run: [System.Web.Security.Membership]::GeneratePassword(32, 0)
+- Copy the output
+
+========================================
+THEN IN RENDER:
+========================================
+
+1. Click "Add Environment Variable"
+2. Key: NEXTAUTH_SECRET
+3. Value: (paste the generated secret)
+4. Click "Save Changes"
+
+Render will automatically redeploy!
+
+========================================
+OTHER REQUIRED VARS:
+========================================
+
+Make sure these are also set:
+
+✅ NEXTAUTH_URL - Your Render app URL
+✅ DATABASE_URL - From your Render PostgreSQL
+✅ AWS credentials (if using S3)
+✅ NODE_ENV - production
+
+========================================
+

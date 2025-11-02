@@ -1,0 +1,41 @@
+========================================
+TOKEN SCOPE ANSWER
+========================================
+
+Check ONLY THIS ONE:
+
+✅ repo
+
+That's it! Just check "repo"
+
+========================================
+What it does:
+========================================
+
+"repo" gives you:
+- Full control of private repositories
+- Read/write access to your code
+- Everything you need to push code
+
+========================================
+What NOT to check:
+========================================
+
+❌ Don't check "admin"
+❌ Don't check "workflow"
+❌ Don't check "write:packages"
+❌ Don't check anything else
+
+Just check: ✅ repo
+
+========================================
+Then:
+========================================
+
+1. Scroll down
+2. Click "Generate token"
+3. Copy the token
+4. Done!
+
+========================================
+

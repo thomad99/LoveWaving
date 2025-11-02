@@ -1,0 +1,50 @@
+========================================
+CHECK YOUR GITHUB NOW
+========================================
+
+Go to: https://github.com/thomad99/LoveWaving
+
+Look for the prisma folder!
+
+You should see:
+https://github.com/thomad99/LoveWaving/tree/main/prisma
+
+Inside prisma folder, you should see:
+- schema.prisma
+
+IF YOU DON'T SEE THESE, YOUR FILES WEREN'T UPLOADED!
+
+========================================
+WHAT TO DO IF FILES ARE MISSING
+========================================
+
+Option 1: Use GitHub Desktop
+----------------------------
+1. Open GitHub Desktop
+2. Add the LoveWaving folder if not already there
+3. You'll see ALL your files on the left
+4. Make sure prisma/ folder is there
+5. Commit and push
+
+Option 2: Use sync.bat
+----------------------
+1. Double-click sync.bat
+2. It will upload ALL files
+3. Then check GitHub again
+
+========================================
+VERIFY ALL THESE FOLDERS EXIST ON GITHUB
+========================================
+
+Go to GitHub and check for:
+✓ app/
+✓ components/
+✓ lib/
+✓ prisma/  ← THIS IS THE IMPORTANT ONE!
+✓ package.json
+✓ render.yaml
+
+If any are missing, your upload didn't work!
+
+========================================
+

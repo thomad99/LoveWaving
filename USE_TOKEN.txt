@@ -1,0 +1,55 @@
+========================================
+HOW TO USE YOUR GITHUB TOKEN
+========================================
+
+After you create a NEW token (after revoking the old one):
+
+========================================
+STEP 1: Get NEW Token
+========================================
+1. Go to: https://github.com/settings/tokens
+2. Create NEW token
+3. Copy it (starts with ghp_)
+4. Save it somewhere SAFE
+
+========================================
+STEP 2: Use sync.bat
+========================================
+1. Double-click: sync.bat in your project folder
+2. It will run and ask for credentials
+3. When asked for USERNAME: thomad99
+4. When asked for PASSWORD: PASTE YOUR NEW TOKEN
+5. Press Enter
+
+========================================
+OR: Use GitHub Desktop (EASIER!)
+========================================
+1. Download: https://desktop.github.com/
+2. Install and open
+3. Sign in with your GitHub account
+4. File → Add Local Repository
+5. Select your LoveWaving folder
+6. Click "Publish repository"
+7. DONE! (No token needed!)
+
+========================================
+WHAT IS THE TOKEN?
+========================================
+
+The token is a PASSWORD substitute for Git.
+
+Instead of using your real GitHub password, you use this token.
+
+It's like a special key that Git uses to authenticate you.
+
+========================================
+REMEMBER:
+========================================
+
+✅ Token = Your password for Git commands
+✅ Keep it SECRET (don't share!)
+✅ If you shared it, create a new one
+✅ GitHub Desktop doesn't need tokens
+
+========================================
+

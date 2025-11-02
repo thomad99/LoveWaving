@@ -1,0 +1,67 @@
+========================================
+IAM ROLES VS USERS
+========================================
+
+You're on the wrong page!
+
+========================================
+CURRENT PAGE: Roles
+========================================
+
+Roles are for:
+- AWS services accessing each other
+- EC2 instances
+- Lambda functions
+- Things INSIDE AWS
+
+NOT for your Render app!
+
+========================================
+GO TO THE CORRECT PAGE: Users
+========================================
+
+You need:
+
+1. Click "IAM" in left sidebar
+2. Click "Users" (NOT "Roles")
+3. Create a User there
+4. Give it Access Keys
+
+========================================
+STEP BY STEP:
+========================================
+
+In AWS Console:
+1. Left sidebar: Click "IAM"
+2. See menu: Users, Groups, Roles, etc.
+3. Click "Users" ← THIS ONE!
+4. Click "Add Users"
+5. Create user with access keys
+
+========================================
+WHY USERS NOT ROLES?
+========================================
+
+Roles = For AWS services
+Users = For people/apps outside AWS
+
+Your app on Render = Outside AWS = Needs USER
+
+========================================
+VISUAL GUIDE:
+========================================
+
+AWS IAM Dashboard Sidebar:
+
+├─ Dashboard
+├─ Access management
+│  ├─ Users           ← GO HERE! ✅
+│  ├─ User groups
+│  ├─ Roles           ← You were here (wrong) ❌
+│  ├─ Policies
+│  └─ Account settings
+├─ Access reports
+└─ ...
+
+========================================
+

@@ -1,0 +1,20 @@
+========================================
+CLICK THIS LINK TO CREATE TOKEN
+========================================
+
+https://github.com/settings/tokens
+
+========================================
+THEN:
+========================================
+1. Click "Generate new token (classic)"
+2. Name: LoveWaving
+3. Expiration: 90 days
+4. Check: "repo"
+5. Click "Generate token"
+6. COPY THE TOKEN!
+
+Then use it in sync.bat when asked for password
+
+========================================
+

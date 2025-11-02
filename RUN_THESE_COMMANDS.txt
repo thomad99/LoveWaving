@@ -1,0 +1,27 @@
+<<<<<<< HEAD
+git init
+
+git add .
+
+git commit -m "Initial commit - LoveWaving digital waiver management system"
+
+git branch -M main
+
+git remote add origin https://github.com/thomad99/LoveWaving.git
+
+git push -u origin main
+
+=======
+git init
+
+git add .
+
+git commit -m "Initial commit - LoveWaving digital waiver management system"
+
+git branch -M main
+
+git remote add origin https://github.com/thomad99/LoveWaving.git
+
+git push -u origin main
+
+>>>>>>> 323292e4b68c097df3b7c68f2edcdaab42bcfef9

@@ -1,0 +1,138 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String?
+  role          UserRole  @default(USER)
+  image         String?
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Google OAuth
+  accounts      Account[]
+  sessions      Session[]
+  
+  // User signatures
+  signatures    UserSignature[]
+  
+  // Signatures for waivers
+  waiverSignatures WaiverSignature[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  startDate   DateTime
+  endDate     DateTime?
+  location    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  createdBy   String  // Admin user ID
+  waiver      Waiver?
+  
+  waiverSignatures WaiverSignature[]
+}
+
+model Waiver {
+  id          String   @id @default(cuid())
+  eventId     String   @unique
+  title       String
+  content     String   @db.Text
+  pdfUrl      String?  // URL to uploaded PDF if provided
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  event       Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  signatures  WaiverSignature[]
+}
+
+model WaiverSignature {
+  id             String   @id @default(cuid())
+  userId         String
+  waiverId       String
+  eventId        String
+  signatureStyle String   // Which of the 5 signature styles was used
+  signatureData  String   @db.Text // The actual signature data
+  signedAt       DateTime @default(now())
+  s3Key          String   // S3 key for the stored signed PDF
+  ipAddress      String?
+  userAgent      String?
+  
+  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  waiver Waiver  @relation(fields: [waiverId], references: [id], onDelete: Cascade)
+  event  Event   @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, eventId]) // User can only sign once per event
+  @@index([userId])
+  @@index([eventId])
+}
+
+model UserSignature {
+  id            String   @id @default(cuid())
+  userId        String
+  signatureName String?  // Optional name for the signature
+  signatureData String   @db.Text // Stored signature data for reuse
+  isDefault     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+}
+
+model VerificationToken {
+  id         String   @id @default(cuid())
+  identifier String
+  token      String   @unique
+  expires    DateTime
+}
+

@@ -1,0 +1,60 @@
+========================================
+FIX FOR RENDER BUILD ERROR
+========================================
+
+The issue is that your Prisma schema file wasn't uploaded to GitHub.
+
+========================================
+SOLUTION STEPS
+========================================
+
+1. Make sure prisma/schema.prisma is uploaded to GitHub
+   - Check: https://github.com/thomad99/LoveWaving/tree/main/prisma
+   - You should see schema.prisma file there
+
+2. If prisma folder is missing on GitHub:
+   - Use GitHub Desktop to add the files
+   - Or use the sync.bat script
+   - Make sure you commit and push ALL files
+
+3. Update Render Build Command to be more explicit:
+
+   Current (in Render dashboard):
+   npm install && npx prisma generate && npm run build
+
+   Change to:
+   npm install && npx prisma generate --schema=./prisma/schema.prisma && npm run build
+
+4. Trigger a new deployment in Render
+
+========================================
+ALTERNATIVE: VERIFY FILES ON GITHUB
+========================================
+
+Go to: https://github.com/thomad99/LoveWaving
+
+You MUST see these files:
+✓ prisma/schema.prisma
+✓ package.json
+✓ app/ folder
+✓ components/ folder
+✓ lib/ folder
+
+If ANY are missing, they weren't pushed to GitHub!
+
+========================================
+IF STILL NOT WORKING
+========================================
+
+Try this build command instead:
+
+npm install && npx prisma generate --schema=prisma/schema.prisma && npm run build
+
+OR completely remove prisma generate from build (not recommended):
+
+npm install && npm run build
+
+But then you'll need to run prisma generate manually in Render shell.
+
+========================================
+

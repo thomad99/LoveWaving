@@ -1,0 +1,66 @@
+========================================
+WHY SYNC DIDN'T ASK FOR TOKEN
+========================================
+
+Possibilities:
+
+1. Git already has your credentials saved
+   - Git credential manager might have your old password
+   - It's using cached credentials
+
+2. First commands succeeded, but push failed
+   - init, add, commit worked
+   - Push failed (but didn't ask for password)
+
+3. Windows Credential Manager has old credentials
+
+========================================
+SOLUTIONS
+========================================
+
+Option 1: Clear old credentials
+-------------------------------
+1. Search Windows for "Credential Manager"
+2. Open "Windows Credential Manager"
+3. Find "git:https://github.com"
+4. Delete it
+5. Run sync.bat again
+
+Option 2: Check what actually ran
+----------------------------------
+Look at the sync.bat output:
+- Did it say "Success" or "Push Failed"?
+- Did it create a commit?
+- What was the last message?
+
+Option 3: Use GitHub Desktop
+-----------------------------
+Just use GitHub Desktop - it's easier!
+https://desktop.github.com/
+
+========================================
+CHECK YOUR GITHUB NOW
+========================================
+
+Go to: https://github.com/thomad99/LoveWaving
+
+Are your files there?
+
+YES → Success! You're done!
+NO → Need to push (continue below)
+
+========================================
+IF FILES ARE NOT ON GITHUB
+========================================
+
+Try this:
+
+1. Open PowerShell in your project folder
+2. Run: git status
+3. See what it says
+4. If files are ready, run: git push -u origin main
+
+That should ask for your token!
+
+========================================
+

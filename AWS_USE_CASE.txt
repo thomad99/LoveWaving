@@ -1,0 +1,24 @@
+========================================
+AWS ACCESS KEY USE CASE
+========================================
+
+Select this option:
+
+✅ "Application running outside AWS"
+
+This is correct because:
+- Your app runs on Render
+- Render is NOT an AWS service
+- Render is outside AWS infrastructure
+- Your app needs to access S3 from Render
+
+========================================
+WHAT TO SELECT:
+========================================
+
+Radio button: "Application running outside AWS"
+
+Then click: "Next"
+
+========================================
+

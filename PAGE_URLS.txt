@@ -1,0 +1,121 @@
+========================================
+PAGE URLS IN LOVEWAVING
+========================================
+
+Next.js App Router - No HTML files!
+
+All pages are .tsx files in app/ folder
+
+========================================
+PUBLIC PAGES:
+========================================
+
+/                      app/page.tsx
+                        Landing page
+
+/auth/signin          app/auth/signin/page.tsx
+                        User sign in
+
+/auth/signup          app/auth/signup/page.tsx
+                        User registration
+
+/health               app/health/page.tsx
+                        System health check
+
+/api/health           app/api/health/route.ts
+                        Health check API (JSON)
+
+========================================
+USER PAGES:
+========================================
+
+/dashboard            app/dashboard/page.tsx
+                        User dashboard
+
+/events/[id]/sign     app/events/[id]/sign/page.tsx
+                        Sign waiver for event
+
+========================================
+ADMIN PAGES:
+========================================
+
+/admin                app/admin/page.tsx
+                        Admin dashboard
+
+/admin/events/new     app/admin/events/new/page.tsx
+                        Create new event
+
+/admin/events/[id]    app/admin/events/[id]/page.tsx
+                        View event details
+
+/admin/events/[id]/edit app/admin/events/[id]/edit/page.tsx
+                        Edit event
+
+========================================
+API ENDPOINTS:
+========================================
+
+/api/auth/[...nextauth] app/api/auth/[...nextauth]/route.ts
+                          NextAuth endpoints
+
+/api/auth/signup       app/api/auth/signup/route.ts
+                          Create user account
+
+/api/auth/signout      app/api/auth/signout/page.tsx
+                          Sign out
+
+/api/events/[id]       app/api/events/[id]/route.ts
+                          Get event details
+
+/api/events/[id]/sign  app/api/events/[id]/sign/route.ts
+                          Submit signature
+
+/api/admin/events      app/api/admin/events/route.ts
+                          Admin: list/create events
+
+/api/admin/events/[id] app/api/admin/events/[id]/route.ts
+                          Admin: get/update event
+
+========================================
+DIRECTORY STRUCTURE:
+========================================
+
+app/
+├── page.tsx              → /
+├── layout.tsx            → Wraps all pages
+├── globals.css           → Global styles
+├── auth/
+│   ├── signin/page.tsx   → /auth/signin
+│   └── signup/page.tsx   → /auth/signup
+├── admin/
+│   ├── page.tsx          → /admin
+│   └── events/
+│       ├── new/page.tsx  → /admin/events/new
+│       └── [id]/
+│           ├── page.tsx  → /admin/events/:id
+│           └── edit/page.tsx → /admin/events/:id/edit
+├── dashboard/
+│   └── page.tsx          → /dashboard
+├── events/
+│   └── [id]/
+│       └── sign/page.tsx → /events/:id/sign
+├── health/
+│   └── page.tsx          → /health
+└── api/
+    ├── health/route.ts   → /api/health
+    ├── auth/
+    ├── events/
+    └── admin/
+
+========================================
+NOTES:
+========================================
+
+- All pages are .tsx (TypeScript React)
+- app/page.tsx is the root (/) page
+- [id] means dynamic route parameter
+- No index.html or HTML files!
+- Next.js generates HTML at runtime
+
+========================================
+

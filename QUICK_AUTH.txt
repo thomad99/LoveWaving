@@ -1,0 +1,37 @@
+========================================
+GITHUB AUTH - SIMPLE ANSWER
+========================================
+
+USE: Personal Access Token
+
+NOT: Deploy Keys (those are for Render later)
+
+========================================
+3 SIMPLE STEPS
+========================================
+
+1. Get token:
+   https://github.com/settings/tokens
+   Click: "Generate new token (classic)"
+   Check: "repo"
+   Click: "Generate"
+   COPY the token!
+
+2. Use it:
+   - Run sync.bat
+   - When asked for password, paste the token
+   
+3. Done!
+
+========================================
+THAT'S IT!
+========================================
+
+Deploy keys are NOT for uploading code.
+Deploy keys are for Render (later, optional).
+
+Right now: Just use Personal Access Token
+to get your code on GitHub!
+
+========================================
+
