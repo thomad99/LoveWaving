@@ -65,6 +65,7 @@ export default function HealthPage() {
     // Refresh every 30 seconds
     const interval = setInterval(fetchHealth, 30000)
     return () => clearInterval(interval)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getStatusBadge = (status: string) => {

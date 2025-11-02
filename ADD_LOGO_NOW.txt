@@ -1,0 +1,51 @@
+========================================
+LOGO NOT FOUND - NEED YOUR LOGO FILE
+========================================
+
+Your logo file is not in the project!
+
+========================================
+WHAT TO DO:
+========================================
+
+Please send me your logo file again.
+
+OR
+
+Upload it to the project folder:
+
+1. Find your logo image file
+2. Copy it to: C:\Users\tomo\OneDrive\My Pet Projects\AI\6.0_Waiver\
+3. Name it: logo.png (or logo.jpg)
+
+Then I can add it to your landing page!
+
+========================================
+SUPPORTED FORMATS:
+========================================
+
+✅ PNG
+✅ JPG/JPEG
+✅ SVG
+✅ GIF
+
+========================================
+WHERE IT WILL GO:
+========================================
+
+For favicon (browser tab):
+  app/icon.png
+
+For landing page header:
+  public/logo.png
+
+========================================
+TELL ME:
+========================================
+
+1. Do you have your logo file?
+2. What's the filename?
+3. I'll help you add it!
+
+========================================
+

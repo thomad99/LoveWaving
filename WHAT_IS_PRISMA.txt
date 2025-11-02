@@ -1,0 +1,105 @@
+========================================
+WHAT IS PRISMA?
+========================================
+
+Prisma is a modern database toolkit for Node.js and TypeScript
+
+========================================
+SIMPLE EXPLANATION:
+========================================
+
+Instead of writing SQL queries like:
+  SELECT * FROM users WHERE email = 'john@example.com'
+
+You write code like:
+  await prisma.user.findUnique({ where: { email } })
+
+Much easier!
+
+========================================
+WHAT IT DOES:
+========================================
+
+1. Manages your database schema
+   - File: prisma/schema.prisma
+   - Defines all your tables
+
+2. Generates TypeScript code
+   - Creates type-safe database client
+   - No SQL writing needed!
+
+3. Handles migrations
+   - Creates database tables
+   - Updates schema when you change it
+
+4. Type safety
+   - Catches errors before runtime
+   - Auto-complete in your editor
+
+========================================
+PRISMA FILE LOCATION:
+========================================
+
+Your database schema is in:
+prisma/schema.prisma
+
+This file defines:
+- User table (login accounts)
+- Event table (your events)
+- Waiver table (waiver forms)
+- WaiverSignature table (signed waivers)
+- etc.
+
+========================================
+COMMON COMMANDS:
+========================================
+
+npm run db:generate
+- Creates the Prisma client
+- Must run after changing schema
+
+npm run db:push
+- Pushes schema to database
+- Creates/updates tables
+- Good for development
+
+npm run db:migrate
+- Runs migration files
+- Better for production
+- Tracks changes
+
+npm run db:studio
+- Opens visual database editor
+- View and edit data
+
+========================================
+IN YOUR PROJECT:
+========================================
+
+Prisma helps you:
+- Store user accounts
+- Manage events
+- Track signed waivers
+- Query data easily
+
+Without writing SQL!
+
+========================================
+EXAMPLE USAGE:
+========================================
+
+Create a user:
+  await prisma.user.create({
+    data: { email, name, password }
+  })
+
+Find all events:
+  await prisma.event.findMany()
+
+Count signatures:
+  await prisma.waiverSignature.count()
+
+All type-safe! ✨
+
+========================================
+

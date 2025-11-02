@@ -1,0 +1,60 @@
+========================================
+DEPLOYMENT CHECKLIST
+========================================
+
+Your health page has an error because database tables don't exist!
+
+========================================
+DO THESE STEPS IN ORDER:
+========================================
+
+STEP 1: Push Code to GitHub
+----------------------------
+
+Run this batch file on your computer:
+  FORCE_CLEAN_PUSH.bat
+
+Wait for: "SUCCESS! Clean code pushed to GitHub!"
+
+
+STEP 2: Trigger Render Deploy
+------------------------------
+
+1. Go to Render Dashboard
+2. Click your service: lovewaving
+3. Click "Manual Deploy"
+4. Click "Deploy latest commit"
+
+
+STEP 3: Wait for Build
+-----------------------
+
+Watch the build logs. You should see:
+  ✓ npm install
+  ✓ npx prisma generate
+  ✓ npx prisma db push (THIS CREATES TABLES!)
+  ✓ npm run build
+  ✓ Deploy successful
+
+
+STEP 4: Test Health Page
+-------------------------
+
+Visit: https://lovewaving.onrender.com/health
+
+Should show database stats (even if all zeros)!
+
+
+========================================
+IF IT STILL FAILS:
+========================================
+
+Check the build logs in Render. Look for:
+  - Error messages
+  - "prisma db push" output
+  - Database connection errors
+
+Share the error with me!
+
+========================================
+
