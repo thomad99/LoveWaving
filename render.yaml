@@ -3,7 +3,7 @@ services:
     name: lovewaving
     env: node
     plan: free
-    buildCommand: npm install && npx prisma generate && npx prisma db push && npm run build
+    buildCommand: npm install && npm run build:render
     startCommand: npm start
     envVars:
       - key: NODE_ENV

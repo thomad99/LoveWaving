@@ -41,6 +41,8 @@ export default function HealthPage() {
   const [health, setHealth] = useState<HealthStatus | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [debugInfo, setDebugInfo] = useState<any>(null)
+  const [debugLoading, setDebugLoading] = useState(false)
 
   const fetchHealth = async () => {
     try {
@@ -68,6 +70,32 @@ export default function HealthPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const fetchDebugInfo = async () => {
+    setDebugLoading(true)
+    try {
+      const response = await fetch('/api/debug')
+      const data = await response.json()
+      setDebugInfo(data)
+    } catch (err) {
+      setDebugInfo({ error: 'Failed to fetch debug info' })
+    } finally {
+      setDebugLoading(false)
+    }
+  }
+
+  const testDatabase = async () => {
+    setDebugLoading(true)
+    try {
+      const response = await fetch('/api/debug?action=test-db')
+      const data = await response.json()
+      setDebugInfo(data)
+    } catch (err) {
+      setDebugInfo({ error: 'Failed to test database' })
+    } finally {
+      setDebugLoading(false)
+    }
+  }
+
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'ok':
@@ -92,15 +120,36 @@ export default function HealthPage() {
         </div>
 
         <div className="mb-6">
-          <Button onClick={fetchHealth} disabled={loading}>
-            {loading ? 'Refreshing...' : 'Refresh Status'}
-          </Button>
+          <div className="flex flex-wrap gap-2 mb-4">
+            <Button onClick={fetchHealth} disabled={loading}>
+              {loading ? 'Refreshing...' : 'Refresh Status'}
+            </Button>
+            <Button onClick={testDatabase} disabled={debugLoading} variant="outline">
+              {debugLoading ? 'Testing...' : 'Test Database'}
+            </Button>
+            <Button onClick={fetchDebugInfo} disabled={debugLoading} variant="outline">
+              {debugLoading ? 'Loading...' : 'Debug Info'}
+            </Button>
+          </div>
           {health && (
-            <span className="ml-4 text-sm text-gray-500">
+            <span className="text-sm text-gray-500">
               Last updated: {new Date(health.timestamp).toLocaleString()}
             </span>
           )}
         </div>
+
+        {debugInfo && (
+          <Card className="mb-6 border-blue-200 bg-blue-50">
+            <CardHeader>
+              <CardTitle>Debug Information</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <pre className="text-xs bg-white p-4 rounded overflow-auto max-h-96">
+                {JSON.stringify(debugInfo, null, 2)}
+              </pre>
+            </CardContent>
+          </Card>
+        )}
 
         {error && (
           <Card className="mb-6 border-red-200 bg-red-50">
