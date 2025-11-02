@@ -62,14 +62,6 @@ export default function HealthPage() {
     }
   }
 
-  useEffect(() => {
-    fetchHealth()
-    // Refresh every 30 seconds
-    const interval = setInterval(fetchHealth, 30000)
-    return () => clearInterval(interval)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   const fetchDebugInfo = async () => {
     setDebugLoading(true)
     try {
@@ -95,6 +87,14 @@ export default function HealthPage() {
       setDebugLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchHealth()
+    // Refresh every 30 seconds
+    const interval = setInterval(fetchHealth, 30000)
+    return () => clearInterval(interval)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const getStatusBadge = (status: string) => {
     switch (status) {
