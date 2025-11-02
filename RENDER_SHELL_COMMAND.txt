@@ -1,0 +1,34 @@
+========================================
+COPY THIS COMMAND:
+========================================
+
+npx prisma db push
+
+========================================
+WHERE TO RUN IT:
+========================================
+
+1. Render Dashboard
+2. Your service (lovewaving)
+3. Click "Shell" tab
+4. Paste: npx prisma db push
+5. Press Enter
+6. Wait for success!
+
+========================================
+WHAT YOU'LL SEE:
+========================================
+
+✓ Prisma schema loaded
+✓ Database tables created
+✓ All done!
+
+========================================
+THEN:
+========================================
+
+Your app will work at:
+https://lovewaving.onrender.com
+
+========================================
+
