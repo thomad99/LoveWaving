@@ -89,11 +89,10 @@ export default function HealthPage() {
   }
 
   useEffect(() => {
-    fetchHealth()
-    // Refresh every 30 seconds
-    const interval = setInterval(fetchHealth, 30000)
-    return () => clearInterval(interval)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // Don't auto-fetch on load, let user click buttons
+    // fetchHealth()
+    // const interval = setInterval(fetchHealth, 30000)
+    // return () => clearInterval(interval)
   }, [])
 
   const getStatusBadge = (status: string) => {
