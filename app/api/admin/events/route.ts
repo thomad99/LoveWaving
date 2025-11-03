@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { uploadWaiverPDF } from '@/lib/s3'
 
 export async function POST(req: NextRequest) {
   try {
@@ -40,12 +41,12 @@ export async function POST(req: NextRequest) {
     if (waiverTitle) {
       let pdfUrl = null
 
-      // TODO: Handle file upload to S3 if needed
-      // if (waiverFile) {
-      //   const buffer = Buffer.from(await waiverFile.arrayBuffer())
-      //   const fileName = `waivers/${event.id}/${Date.now()}.pdf`
-      //   pdfUrl = await uploadToS3(buffer, fileName)
-      // }
+      // Handle file upload to S3 if provided
+      if (waiverFile) {
+        const buffer = Buffer.from(await waiverFile.arrayBuffer())
+        const fileName = `waivers/${event.id}/${waiverFile.name}`
+        pdfUrl = await uploadWaiverPDF(buffer, fileName)
+      }
 
       await prisma.waiver.create({
         data: {

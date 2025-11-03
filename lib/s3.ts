@@ -26,6 +26,23 @@ export async function uploadSignedWaiver(
   return result.Key
 }
 
+export async function uploadWaiverPDF(
+  fileBuffer: Buffer,
+  fileName: string
+): Promise<string> {
+  const params = {
+    Bucket: BUCKET_NAME,
+    Key: fileName,
+    Body: fileBuffer,
+    ContentType: 'application/pdf',
+    ACL: 'public-read', // Waiver PDFs should be publicly accessible
+  }
+
+  const result = await s3.upload(params).promise()
+  // Return the public URL
+  return `https://${BUCKET_NAME}.s3.${process.env.AWS_REGION || 'us-east-1'}.amazonaws.com/${result.Key}`
+}
+
 export async function getSignedWaiverUrl(key: string): Promise<string> {
   const params = {
     Bucket: BUCKET_NAME,

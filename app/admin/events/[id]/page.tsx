@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge'
 import { format } from 'date-fns'
 import { QRCodeComponent } from '@/components/admin/qr-code'
 import { SignOutButton } from '@/components/auth/sign-out-button'
+import { ViewDocumentButton } from '@/components/admin/view-document-button'
 
 export default async function EventDetailPage({
   params,
@@ -199,7 +200,10 @@ export default async function EventDetailPage({
                         {signature.signatureStyle}
                       </div>
                     </div>
-                    <Badge>Completed</Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge>Completed</Badge>
+                      <ViewDocumentButton signatureId={signature.id} />
+                    </div>
                   </div>
                 ))}
               </div>
