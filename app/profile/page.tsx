@@ -155,9 +155,7 @@ export default function ProfilePage() {
       <nav className="border-b border-slate-800">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href={session?.user.role === 'ADMIN' ? '/admin' : '/dashboard'} className="flex items-center gap-3">
-            <div className="w-12 h-12 relative">
-              <Image src="/logo.png" alt="LoveWaving Logo" fill className="object-contain" />
-            </div>
+            <Image src="/logo.png" alt="LoveWaving Logo" width={48} height={48} className="object-contain" />
             <span className="text-2xl font-bold text-white">LoveWaving</span>
           </Link>
           <SignOutButton />

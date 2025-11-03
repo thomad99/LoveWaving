@@ -1,0 +1,53 @@
+========================================
+PROFILE & SIGNATURE MANAGEMENT ADDED ✅
+========================================
+
+User can now manage their profile, change email/password,
+and save their signature for future use!
+
+========================================
+NEW FEATURES:
+========================================
+
+1. PROFILE PAGE (/profile)
+   - Update name and email
+   - Change password (requires current password)
+   - Save/update signature
+   - View saved signature
+
+2. SAVED SIGNATURES
+   - First drawn signature automatically saved
+   - Pre-filled when signing waivers
+   - Can update/replace saved signature anytime
+   - Only custom drawn signatures saved (not mark/stamp)
+
+3. PROFILE BUTTON
+   - Added to User Dashboard navbar
+   - Added to Admin Dashboard navbar
+   - Easy access to manage account
+
+========================================
+TECHNICAL DETAILS:
+========================================
+
+- API: /api/user/profile (GET/PUT)
+  - GET: Fetch user profile + saved signature
+  - PUT: Update profile info or password
+
+- API: /api/user/signature (POST)
+  - Save or update user's signature
+
+- API: /api/events/[id] (GET)
+  - Now returns savedSignature if available
+  - Pre-fills signature on sign page
+
+- Signature Canvas Component
+  - Auto-loads saved signature into canvas
+  - Shows when user has saved signature
+
+========================================
+WHAT'S NEXT:
+========================================
+
+Email notifications are next!
+
