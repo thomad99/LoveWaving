@@ -115,10 +115,23 @@ export async function GET() {
       },
     }
   } catch (error: any) {
+    // Capture more detailed error information
+    const errorMessage = error.message || error.Message || error.Code || 'Unknown error'
+    const errorName = error.name || error.$metadata?.httpStatusCode || 'UnknownError'
+    const fullError = `${errorName}: ${errorMessage}`
+    
+    console.error('S3 health check error:', {
+      error,
+      message: errorMessage,
+      name: errorName,
+      code: error.Code,
+      statusCode: error.$metadata?.httpStatusCode,
+    })
+    
     health.checks.s3 = {
       status: 'error',
       accessible: false,
-      error: error.message,
+      error: fullError,
       stats: {
         bucketName: process.env.AWS_S3_BUCKET_NAME || 'not configured',
         region: getRegionCode(),
