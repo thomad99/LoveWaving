@@ -1,0 +1,26 @@
+========================================
+READY TO COMPLETE FEATURES
+========================================
+
+I've added QR code libraries to package.json!
+
+You need to run this locally:
+  npm install
+
+Then push to GitHub and deploy.
+
+========================================
+WHAT'S NEXT:
+========================================
+
+After you do npm install, I'll add:
+1. QR code generation on event detail page
+2. Public join flow via QR code
+3. Email notifications
+4. CSV export
+5. Waiver update notifications
+
+This is a big feature set! Let me know when you've run npm install.
+
+========================================
+

@@ -1,0 +1,51 @@
+========================================
+HOW TO CREATE YOUR FIRST ADMIN USER
+========================================
+
+You need to change your role to ADMIN in the database.
+
+========================================
+OPTION 1: Using Render Shell (EASY)
+========================================
+
+1. Go to Render Dashboard
+2. Click your service: lovewaving
+3. Click "Shell" tab
+4. Type this command:
+
+   npx prisma db execute --stdin
+
+5. Paste this SQL:
+
+   UPDATE "User" SET role = 'ADMIN' WHERE email = 'your-email@example.com';
+
+6. Replace 'your-email@example.com' with YOUR actual email
+7. Press Enter
+8. Done!
+
+========================================
+OPTION 2: Direct SQL Query
+========================================
+
+1. Render Dashboard → Your PostgreSQL database
+2. Click "Connect" or "Info"
+3. Get connection details
+4. Connect with any SQL client
+5. Run:
+
+   UPDATE "User" SET role = 'ADMIN' WHERE email = 'your-email@example.com';
+
+6. Done!
+
+========================================
+VERIFY:
+========================================
+
+After updating:
+
+1. Sign out and sign back in
+2. You should now see "Admin" dashboard link
+3. Can create events!
+
+========================================
+

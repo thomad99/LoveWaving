@@ -1,0 +1,55 @@
+========================================
+NEW DATABASE SETUP
+========================================
+
+Good! You created a fresh PostgreSQL database!
+
+Now we need to create the tables.
+
+========================================
+AUTOMATIC WAY (RECOMMENDED):
+========================================
+
+1. Go to Render Dashboard
+2. Your service: lovewaving
+3. Settings → Build Command
+4. Make sure it says:
+
+   npm install && npx prisma generate && npx prisma db push && npm run build
+
+5. If it doesn't, change it to that and Save
+6. Click "Manual Deploy" → "Deploy latest commit"
+7. Wait for build (5 min)
+
+This will create all tables automatically!
+
+========================================
+MANUAL WAY (if needed):
+========================================
+
+If automatic doesn't work, use Render Shell:
+
+1. Render Dashboard → Your service
+2. Click "Shell" tab
+3. Run:
+
+   npx prisma db push
+
+4. Done!
+
+========================================
+VERIFY IT WORKED:
+========================================
+
+After deploy or shell command:
+
+1. Go to /health page
+2. Click "Test Database" button
+3. Should see:
+
+   ✓ userTableAccess: OK
+   ✓ eventTableAccess: OK
+   ✓ Tables list with User, Account, etc.
+
+========================================
+

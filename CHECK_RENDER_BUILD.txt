@@ -1,0 +1,36 @@
+========================================
+CHECK YOUR RENDER BUILD COMMAND
+========================================
+
+The database tables aren't being created!
+
+========================================
+DO THIS:
+========================================
+
+1. Go to Render Dashboard
+2. Click your service: lovewaving
+3. Click "Settings" tab
+4. Scroll to "Build Command"
+5. Tell me what it says!
+
+It should say:
+  npm install && npm run build:render
+
+If it says something else, THAT'S THE PROBLEM!
+
+========================================
+IF IT'S WRONG:
+========================================
+
+Change "Build Command" to:
+  npm install && npm run build:render
+
+Then click "Save"
+Then click "Manual Deploy"
+Then click "Deploy latest commit"
+
+Wait for build to finish, then test again!
+
+========================================
+

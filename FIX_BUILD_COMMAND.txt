@@ -1,0 +1,33 @@
+========================================
+FOUND THE PROBLEM!
+========================================
+
+Your Build Command is:
+  npm install && npx prisma generate && npm run build
+
+It's MISSING: prisma db push
+
+========================================
+FIX IT:
+========================================
+
+1. Click the "Edit" button in Build Command
+2. Change it to:
+
+   npm install && npx prisma generate && npx prisma db push && npm run build
+
+3. Click "Save"
+
+========================================
+THEN:
+========================================
+
+1. Click "Manual Deploy" button
+2. Click "Deploy latest commit"
+3. Wait for build (5 minutes)
+4. Check /health page again
+
+This WILL create your database tables!
+
+========================================
+
