@@ -45,7 +45,9 @@ export default async function AdminDashboard() {
             <span className="text-sm text-gray-400">Admin Dashboard</span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-white">{session.user.email}</span>
+            <Link href="/profile">
+              <Button variant="ghost" size="sm" className="text-white hover:bg-slate-800">Profile</Button>
+            </Link>
             <SignOutButton />
           </div>
         </div>

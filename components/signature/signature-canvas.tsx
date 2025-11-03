@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import SignatureCanvasComponent from 'react-signature-canvas'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -31,6 +31,24 @@ export function SignatureCanvas({
       onSignatureChange(data)
     }
   }
+
+  // Load saved signature into canvas when selectedStyle is 'custom'
+  useEffect(() => {
+    if (selectedStyle === 'custom' && signatureData && signaturePadRef.current) {
+      const img = new Image()
+      img.src = signatureData
+      img.onload = () => {
+        const ctx = signaturePadRef.current?.getCanvas()?.getContext('2d')
+        if (ctx && signaturePadRef.current) {
+          const canvas = signaturePadRef.current.getCanvas()
+          if (canvas) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            ctx.drawImage(img, 0, 0)
+          }
+        }
+      }
+    }
+  }, [selectedStyle, signatureData])
 
   const generateStyledSignature = () => {
     // Generate different signature styles programmatically

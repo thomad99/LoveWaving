@@ -40,6 +40,13 @@ export default function SignEventPage({ params }: { params: { id: string } }) {
       setEvent(data.event)
       setWaiver(data.waiver)
       setHasSigned(data.hasSigned)
+      
+      // Load saved signature if available
+      if (data.savedSignature) {
+        setSignatureData(data.savedSignature.signatureData)
+        setSelectedStyle('custom') // Mark as custom saved signature
+      }
+      
       setLoading(false)
     } catch (error) {
       console.error('Error loading event:', error)

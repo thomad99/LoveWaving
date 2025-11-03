@@ -1,0 +1,27 @@
+========================================
+SINGLE FLOW CREATED ✅
+========================================
+
+Removed tabs! Now one simple flow.
+
+========================================
+WHAT CHANGED:
+========================================
+
+Event creation now shows:
+1. Event Information card
+2. Waiver Form card
+3. Submit button
+
+All on one scrollable page!
+
+========================================
+ALSO ADDED:
+========================================
+
+- Dark blue theme on create page
+- Logo on navbar
+- Sign out working
+
+========================================
+

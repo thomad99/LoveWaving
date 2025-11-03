@@ -51,7 +51,9 @@ export default async function UserDashboard() {
             <span className="text-2xl font-bold text-white">LoveWaving</span>
           </Link>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-white">{session.user.email}</span>
+            <Link href="/profile">
+              <Button variant="ghost" size="sm" className="text-white hover:bg-slate-800">Profile</Button>
+            </Link>
             {session.user.role === 'ADMIN' && (
               <Link href="/admin">
                 <Button variant="outline" size="sm" className="text-white border-white hover:bg-white hover:text-slate-900">Admin</Button>

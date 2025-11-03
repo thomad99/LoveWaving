@@ -50,10 +50,19 @@ export async function GET(
       },
     })
 
+    // Load saved signature for the user
+    const savedSignature = await prisma.userSignature.findFirst({
+      where: {
+        userId: session.user.id,
+        isDefault: true,
+      },
+    })
+
     return NextResponse.json({
       event,
       waiver: event.waiver,
       hasSigned: !!existingSignature,
+      savedSignature,
     })
   } catch (error) {
     console.error('Error fetching event:', error)
