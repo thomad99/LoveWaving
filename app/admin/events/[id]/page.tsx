@@ -139,14 +139,25 @@ export default async function EventDetailPage({
                       <h3 className="font-semibold mb-2">Title</h3>
                       <p className="text-gray-700">{event.waiver.title}</p>
                     </div>
-                    {event.waiver.content && (
+                    {event.waiver.pdfUrl ? (
+                      <div>
+                        <h3 className="font-semibold mb-2">PDF Document</h3>
+                        <div className="border rounded overflow-hidden">
+                          <iframe
+                            src={event.waiver.pdfUrl}
+                            className="w-full h-[600px] border-0"
+                            title="Waiver PDF"
+                          />
+                        </div>
+                      </div>
+                    ) : event.waiver.content ? (
                       <div>
                         <h3 className="font-semibold mb-2">Content</h3>
                         <div className="bg-gray-50 p-4 rounded whitespace-pre-wrap text-sm">
                           {event.waiver.content}
                         </div>
                       </div>
-                    )}
+                    ) : null}
                   </div>
                 </CardContent>
               </Card>
