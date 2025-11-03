@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { format } from 'date-fns'
 import { QRCodeComponent } from '@/components/admin/qr-code'
+import { SignOutButton } from '@/components/auth/sign-out-button'
 
 export default async function EventDetailPage({
   params,
@@ -62,9 +63,7 @@ export default async function EventDetailPage({
           <Link href="/admin" className="text-2xl font-bold text-indigo-600">
             LoveWaving
           </Link>
-          <Link href="/api/auth/signout">
-            <Button variant="outline">Sign Out</Button>
-          </Link>
+          <SignOutButton />
         </div>
       </nav>
 

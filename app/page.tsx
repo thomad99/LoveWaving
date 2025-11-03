@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { SignOutButton } from '@/components/auth/sign-out-button'
 
 export default async function HomePage() {
   const session = await getServerSession(authOptions)
@@ -18,9 +19,7 @@ export default async function HomePage() {
                 <Link href={session.user.role === 'ADMIN' ? '/admin' : '/dashboard'}>
                   <Button variant="ghost">Dashboard</Button>
                 </Link>
-                <Link href="/api/auth/signout">
-                  <Button>Sign Out</Button>
-                </Link>
+                <SignOutButton />
               </>
             ) : (
               <>
