@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { uploadWaiverPDF } from '@/lib/s3'
+import { parsePDFForm } from '@/lib/pdf-parser'
 
 export async function POST(req: NextRequest) {
   try {
@@ -40,12 +41,24 @@ export async function POST(req: NextRequest) {
 
     if (waiverTitle) {
       let pdfUrl = null
+      let formFields = null
 
       // Handle file upload to S3 if provided
       if (waiverFile) {
         const buffer = Buffer.from(await waiverFile.arrayBuffer())
         const fileName = `waivers/${event.id}/${waiverFile.name}`
         pdfUrl = await uploadWaiverPDF(buffer, fileName)
+        
+        // Parse PDF for form fields
+        try {
+          const fields = await parsePDFForm(buffer)
+          if (fields && fields.length > 0) {
+            formFields = fields
+          }
+        } catch (parseError) {
+          console.error('Error parsing PDF form fields:', parseError)
+          // Continue without form fields if parsing fails
+        }
       }
 
       await prisma.waiver.create({
@@ -54,6 +67,7 @@ export async function POST(req: NextRequest) {
           title: waiverTitle,
           content: waiverContent || '',
           pdfUrl,
+          formFields,
         },
       })
     }

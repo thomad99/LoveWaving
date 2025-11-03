@@ -164,16 +164,20 @@ export default function SignEventPage({ params }: { params: { id: string } }) {
           <Card>
             <CardHeader>
               <CardTitle>{waiver.title}</CardTitle>
+              <CardDescription>Please review the waiver below and complete all required information</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="prose max-w-none">
                 {waiver.pdfUrl ? (
-                  <iframe
-                    src={waiver.pdfUrl}
-                    className="w-full h-96 border rounded"
-                  />
+                  <div className="border rounded overflow-hidden">
+                    <iframe
+                      src={waiver.pdfUrl}
+                      className="w-full h-[600px] md:h-[800px] border-0"
+                      title="Waiver Document"
+                    />
+                  </div>
                 ) : (
-                  <div className="whitespace-pre-wrap text-gray-700">
+                  <div className="whitespace-pre-wrap text-gray-700 max-h-[600px] overflow-y-auto">
                     {waiver.content}
                   </div>
                 )}
