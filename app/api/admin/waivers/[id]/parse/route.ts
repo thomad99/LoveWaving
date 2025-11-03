@@ -5,8 +5,15 @@ import { prisma } from '@/lib/prisma'
 import { parsePDFForm } from '@/lib/pdf-parser'
 import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3'
 
+// Helper to extract region code from full region name
+function getRegionCode(): string {
+  const region = process.env.AWS_REGION || 'us-east-1'
+  const match = region.match(/\b([a-z]{2}-[a-z]+-\d+)\b/i)
+  return match ? match[1] : region
+}
+
 const s3Client = new S3Client({
-  region: process.env.AWS_REGION || 'us-east-1',
+  region: getRegionCode(),
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || '',
