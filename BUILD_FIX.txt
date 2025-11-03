@@ -1,0 +1,10 @@
+========================================
+BUILD ERROR FIXED ✅
+========================================
+
+Removed 'includeMargin' from QR code.
+
+Should build successfully now!
+
+========================================
+
