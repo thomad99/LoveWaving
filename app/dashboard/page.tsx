@@ -69,7 +69,7 @@ export default function UserDashboard() {
   }
 
   // Get unique locations from events
-  const locations = Array.from(new Set(events.map(e => e.location).filter(Boolean)))
+  const locations = Array.from(new Set(events.map(e => e.location).filter((loc): loc is string => Boolean(loc))))
 
   // Filter events
   const filteredEvents = events.filter(event => {

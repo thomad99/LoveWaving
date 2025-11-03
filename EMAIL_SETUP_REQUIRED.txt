@@ -1,0 +1,78 @@
+========================================
+EMAIL SETUP REQUIRED 📧
+========================================
+
+To enable email notifications, you need:
+
+========================================
+OPTIONS:
+========================================
+
+OPTION 1: SMTP Server (Recommended for production)
+---------------------------------------
+You'll need an SMTP service provider:
+
+Popular Options:
+1. SendGrid (Free: 100 emails/day)
+2. Mailgun (Free: 5,000 emails/month)
+3. AWS SES (Pay-as-you-go, very cheap)
+4. Postmark (Free: 100 emails/month)
+5. Your own SMTP server
+
+What I need from you:
+- SMTP_HOST (e.g., smtp.sendgrid.net)
+- SMTP_PORT (e.g., 587)
+- SMTP_USER (your username)
+- SMTP_PASSWORD (your password)
+- SMTP_FROM (e.g., noreply@lovewaving.com)
+
+========================================
+OPTION 2: Gmail (Good for testing)
+---------------------------------------
+You can use your Gmail account for testing:
+
+What I need:
+- GMAIL_USER (your email)
+- GMAIL_APP_PASSWORD (generate in Google Account settings)
+
+Note: Requires "App Password" enabled in Google Account
+
+========================================
+WHAT WILL BE IMPLEMENTED:
+========================================
+
+1. Email to User when they sign waiver
+   - Includes copy of signed document
+   - Event details
+   - Timestamp
+
+2. Email to Event Organizer when someone signs
+   - Who signed
+   - When they signed
+   - Link to view the signed document
+
+3. Email when waiver is updated
+   - Notifies existing signers to re-sign
+   - Link to re-sign
+
+========================================
+TECHNICAL IMPLEMENTATION:
+========================================
+
+I will add:
+- nodemailer package
+- Email templates
+- Email service utility
+- API routes for sending
+- Configuration in env.example
+
+========================================
+NEXT STEP:
+========================================
+
+Please choose an email service and provide:
+1. Which service (SMTP, Gmail, etc.)
+2. The credentials I'll need
+
+Or tell me if you want me to set up a specific service!
+
