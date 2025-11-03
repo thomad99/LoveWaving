@@ -1,0 +1,36 @@
+========================================
+FIX THE BUILD COMMAND
+========================================
+
+Your render.yaml says:
+  buildCommand: npm install && npm run build:render
+
+But check your Render Dashboard!
+
+Go to:
+1. Render Dashboard
+2. Your service: lovewaving
+3. Settings tab
+4. "Build Command" field
+
+What does it actually say?
+
+Render might NOT be using render.yaml!
+
+========================================
+DO THIS:
+========================================
+
+Change Build Command to:
+  npm install && npx prisma generate && npx prisma db push && npm run build
+
+NOT: npm run build:render
+
+Then:
+1. Click Save
+2. Clear Build Cache (if button exists)
+3. Manual Deploy
+4. Wait 5-10 minutes
+
+========================================
+

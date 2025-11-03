@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { format } from 'date-fns'
+import { SignOutButton } from '@/components/auth/sign-out-button'
 
 export default async function UserDashboard() {
   const session = await getServerSession(authOptions)
@@ -52,9 +53,7 @@ export default async function UserDashboard() {
                 <Button variant="outline" size="sm">Admin</Button>
               </Link>
             )}
-            <Link href="/api/auth/signout">
-              <Button variant="outline" size="sm">Sign Out</Button>
-            </Link>
+            <SignOutButton size="sm" />
           </div>
         </div>
       </nav>

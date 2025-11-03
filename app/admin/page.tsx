@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { EventsList } from '@/components/admin/events-list'
 import { PlusIcon } from 'lucide-react'
+import { SignOutButton } from '@/components/auth/sign-out-button'
 
 export default async function AdminDashboard() {
   const session = await getServerSession(authOptions)
@@ -41,9 +42,7 @@ export default async function AdminDashboard() {
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-gray-600">{session.user.email}</span>
-            <Link href="/api/auth/signout">
-              <Button variant="outline">Sign Out</Button>
-            </Link>
+            <SignOutButton />
           </div>
         </div>
       </nav>
