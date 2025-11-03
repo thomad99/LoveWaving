@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { signIn, useSession } from 'next-auth/react'
+import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { SignatureCanvas } from '@/components/signature/signature-canvas'
@@ -99,10 +101,10 @@ export default function SignEventPage({ params }: { params: { id: string } }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-white">Loading...</p>
         </div>
       </div>
     )
@@ -110,38 +112,58 @@ export default function SignEventPage({ params }: { params: { id: string } }) {
 
   if (hasSigned) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <Card className="max-w-md">
-          <CardHeader>
-            <CardTitle>Already Signed</CardTitle>
-            <CardDescription>
-              You have already signed the waiver for this event.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button onClick={() => router.push('/dashboard')} className="w-full">
-              Return to Dashboard
-            </Button>
-          </CardContent>
-        </Card>
+      <div className="min-h-screen bg-slate-900">
+        <nav className="border-b border-slate-800">
+          <div className="container mx-auto px-4 py-4">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="LoveWaving Logo" width={48} height={48} className="object-contain" />
+              <span className="text-2xl font-bold text-white">LoveWaving</span>
+            </Link>
+          </div>
+        </nav>
+        <div className="min-h-[calc(100vh-73px)] flex items-center justify-center">
+          <Card className="max-w-md">
+            <CardHeader>
+              <CardTitle>Already Signed</CardTitle>
+              <CardDescription>
+                You have already signed the waiver for this event.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button onClick={() => router.push('/dashboard')} className="w-full">
+                Return to Dashboard
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     )
   }
 
   if (!event || !waiver) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <Card className="max-w-md">
-          <CardHeader>
-            <CardTitle>Not Found</CardTitle>
-            <CardDescription>This event could not be found.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button onClick={() => router.push('/dashboard')} className="w-full">
-              Return to Dashboard
-            </Button>
-          </CardContent>
-        </Card>
+      <div className="min-h-screen bg-slate-900">
+        <nav className="border-b border-slate-800">
+          <div className="container mx-auto px-4 py-4">
+            <Link href="/" className="flex items-center gap-3">
+              <Image src="/logo.png" alt="LoveWaving Logo" width={48} height={48} className="object-contain" />
+              <span className="text-2xl font-bold text-white">LoveWaving</span>
+            </Link>
+          </div>
+        </nav>
+        <div className="min-h-[calc(100vh-73px)] flex items-center justify-center">
+          <Card className="max-w-md">
+            <CardHeader>
+              <CardTitle>Not Found</CardTitle>
+              <CardDescription>This event could not be found.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button onClick={() => router.push('/dashboard')} className="w-full">
+                Return to Dashboard
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     )
   }
@@ -150,7 +172,10 @@ export default function SignEventPage({ params }: { params: { id: string } }) {
     <div className="min-h-screen bg-gray-50">
       <nav className="border-b bg-white">
         <div className="container mx-auto px-4 py-4">
-          <h1 className="text-2xl font-bold text-indigo-600">LoveWaving</h1>
+          <Link href="/" className="flex items-center gap-3">
+            <Image src="/logo.png" alt="LoveWaving Logo" width={48} height={48} className="object-contain" />
+            <span className="text-2xl font-bold text-indigo-600">LoveWaving</span>
+          </Link>
         </div>
       </nav>
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -72,8 +73,9 @@ export default function JoinEventPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <nav className="border-b bg-white/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-indigo-600">
-            LoveWaving
+          <Link href="/" className="flex items-center gap-3">
+            <Image src="/logo.png" alt="LoveWaving Logo" width={48} height={48} className="object-contain" />
+            <span className="text-2xl font-bold text-indigo-600">LoveWaving</span>
           </Link>
           <Link href="/api/auth/signin">
             <Button variant="ghost">Sign In</Button>

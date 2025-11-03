@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -59,9 +60,12 @@ export default function SignUpPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-center text-indigo-600">
-            LoveWaving
-          </CardTitle>
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <Image src="/logo.png" alt="LoveWaving Logo" width={48} height={48} className="object-contain" />
+            <CardTitle className="text-3xl font-bold text-indigo-600">
+              LoveWaving
+            </CardTitle>
+          </div>
           <CardDescription className="text-center">
             Create your account
           </CardDescription>

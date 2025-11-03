@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { Button } from '@/components/ui/button'
@@ -12,7 +13,10 @@ export default async function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <nav className="border-b bg-white/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between flex-wrap gap-2">
-          <h1 className="text-xl md:text-2xl font-bold text-indigo-600">LoveWaving</h1>
+          <Link href="/" className="flex items-center gap-2 md:gap-3">
+            <Image src="/logo.png" alt="LoveWaving Logo" width={40} height={40} className="object-contain md:w-12 md:h-12" />
+            <span className="text-xl md:text-2xl font-bold text-indigo-600">LoveWaving</span>
+          </Link>
           <div className="flex gap-2 md:gap-4 flex-wrap">
             {session ? (
               <>
