@@ -13,6 +13,7 @@ export default function AdminSignupPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const [clubName, setClubName] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -25,7 +26,7 @@ export default function AdminSignupPage() {
       const response = await fetch('/api/auth/admin-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, name }),
+        body: JSON.stringify({ email, password, name, clubName }),
       })
 
       const data = await response.json()
@@ -68,6 +69,17 @@ export default function AdminSignupPage() {
                 placeholder="John Doe"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="clubName">Club Name *</Label>
+              <Input
+                id="clubName"
+                type="text"
+                placeholder="Your Yacht Club"
+                value={clubName}
+                onChange={(e) => setClubName(e.target.value)}
                 required
               />
             </div>

@@ -21,6 +21,7 @@ export async function GET() {
         id: true,
         email: true,
         name: true,
+        clubName: true,
       },
     })
 
@@ -60,13 +61,18 @@ export async function PUT(req: NextRequest) {
       )
     }
 
-    const { name, email, currentPassword, newPassword, confirmPassword } = await req.json()
+    const { name, email, clubName, currentPassword, newPassword, confirmPassword } = await req.json()
 
     const updateData: any = {}
 
     // Update name if provided
     if (name !== undefined) {
       updateData.name = name
+    }
+
+    // Update clubName if provided
+    if (clubName !== undefined) {
+      updateData.clubName = clubName
     }
 
     // Update email if provided
@@ -146,6 +152,7 @@ export async function PUT(req: NextRequest) {
         id: true,
         email: true,
         name: true,
+        clubName: true,
       },
     })
 

@@ -4,10 +4,10 @@ import { prisma } from '@/lib/prisma'
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, password, name } = await req.json()
+    const { email, password, name, clubName } = await req.json()
 
     // Validate input
-    if (!email || !password || !name) {
+    if (!email || !password || !name || !clubName) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -42,6 +42,7 @@ export async function POST(req: NextRequest) {
         email,
         password: hashedPassword,
         name,
+        clubName,
       },
     })
 

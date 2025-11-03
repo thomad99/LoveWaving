@@ -32,6 +32,7 @@ export default function ProfilePage() {
   const [profileData, setProfileData] = useState({
     name: '',
     email: '',
+    clubName: '',
     currentPassword: '',
     newPassword: '',
     confirmPassword: '',
@@ -63,6 +64,7 @@ export default function ProfilePage() {
       setProfileData({
         name: data.name || '',
         email: data.email || '',
+        clubName: data.clubName || '',
         currentPassword: '',
         newPassword: '',
         confirmPassword: '',
@@ -91,6 +93,7 @@ export default function ProfilePage() {
         body: JSON.stringify({
           name: profileData.name,
           email: profileData.email,
+          clubName: profileData.clubName,
           currentPassword: profileData.currentPassword || undefined,
           newPassword: profileData.newPassword || undefined,
           confirmPassword: profileData.confirmPassword || undefined,
@@ -212,6 +215,18 @@ export default function ProfilePage() {
                     value={profileData.email}
                     onChange={(e) =>
                       setProfileData({ ...profileData, email: e.target.value })
+                    }
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="clubName">Club Name</Label>
+                  <Input
+                    id="clubName"
+                    type="text"
+                    value={profileData.clubName}
+                    onChange={(e) =>
+                      setProfileData({ ...profileData, clubName: e.target.value })
                     }
                   />
                 </div>

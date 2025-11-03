@@ -85,7 +85,7 @@ export default async function AdminDashboard() {
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-semibold">Events</h2>
           <Link href="/admin/events/new">
-            <Button>
+            <Button className="bg-indigo-600 hover:bg-indigo-700">
               <PlusIcon className="mr-2 h-4 w-4" />
               Create Event
             </Button>

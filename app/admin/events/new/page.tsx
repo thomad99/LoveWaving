@@ -124,7 +124,7 @@ export default function NewEventPage() {
                   <Label htmlFor="startDate">Start Date *</Label>
                   <Input
                     id="startDate"
-                    type="datetime-local"
+                    type="date"
                     value={eventData.startDate}
                     onChange={(e) =>
                       setEventData({ ...eventData, startDate: e.target.value })
@@ -137,7 +137,7 @@ export default function NewEventPage() {
                   <Label htmlFor="endDate">End Date</Label>
                   <Input
                     id="endDate"
-                    type="datetime-local"
+                    type="date"
                     value={eventData.endDate}
                     onChange={(e) =>
                       setEventData({ ...eventData, endDate: e.target.value })
@@ -223,7 +223,7 @@ export default function NewEventPage() {
                 Cancel
               </Button>
             </Link>
-            <Button type="submit" disabled={loading} className="flex-1">
+            <Button type="submit" disabled={loading} className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white">
               {loading ? 'Creating...' : 'Create Event'}
             </Button>
           </div>
