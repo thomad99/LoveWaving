@@ -1,6 +1,6 @@
 {
   "name": "lovewaving",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Digital waiver management system",
   "private": true,
   "scripts": {
