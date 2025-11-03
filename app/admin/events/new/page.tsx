@@ -20,7 +20,6 @@ export default function NewEventPage() {
     title: '',
     description: '',
     startDate: '',
-    endDate: '',
     location: '',
   })
 
@@ -119,31 +118,17 @@ export default function NewEventPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="startDate">Start Date *</Label>
-                  <Input
-                    id="startDate"
-                    type="date"
-                    value={eventData.startDate}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, startDate: e.target.value })
-                    }
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="endDate">End Date</Label>
-                  <Input
-                    id="endDate"
-                    type="date"
-                    value={eventData.endDate}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, endDate: e.target.value })
-                    }
-                  />
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="startDate">Start Date *</Label>
+                <Input
+                  id="startDate"
+                  type="date"
+                  value={eventData.startDate}
+                  onChange={(e) =>
+                    setEventData({ ...eventData, startDate: e.target.value })
+                  }
+                  required
+                />
               </div>
 
               <div className="space-y-2">

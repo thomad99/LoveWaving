@@ -1,0 +1,43 @@
+========================================
+AWS S3 BODY CONVERSION FIX ✅
+========================================
+
+Fixed issue with AWS SDK v3 response body handling!
+
+========================================
+THE PROBLEM:
+========================================
+
+AWS SDK v3 returns a different body type than v2.
+The old code tried to iterate over it directly:
+
+  for await (const chunk of response.Body) {
+    chunks.push(Buffer.from(chunk))
+  }
+
+This failed with:
+  "Type 'StreamingBlobPayloadOutputTypes' must have 
+   '[Symbol.asyncIterator]()' method"
+
+========================================
+THE SOLUTION:
+========================================
+
+Use the transformToByteArray() method:
+
+  const pdfBuffer = Buffer.from(
+    await response.Body.transformToByteArray()
+  )
+
+This is the proper way to convert AWS SDK v3 
+streaming responses to buffers.
+
+========================================
+FILES FIXED:
+========================================
+
+1. app/api/admin/waivers/[id]/parse/route.ts ✅
+2. app/api/waivers/[id]/fields/route.ts ✅
+
+========================================
+

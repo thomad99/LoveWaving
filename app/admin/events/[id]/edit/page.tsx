@@ -17,7 +17,6 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
     title: '',
     description: '',
     startDate: '',
-    endDate: '',
     location: '',
     isActive: false,
   })
@@ -35,8 +34,7 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
       setEventData({
         title: event.title,
         description: event.description || '',
-        startDate: new Date(event.startDate).toISOString().slice(0, 16),
-        endDate: event.endDate ? new Date(event.endDate).toISOString().slice(0, 16) : '',
+        startDate: new Date(event.startDate).toISOString().slice(0, 10),
         location: event.location || '',
         isActive: event.isActive,
       })
@@ -138,31 +136,17 @@ export default function EditEventPage({ params }: { params: { id: string } }) {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="startDate">Start Date *</Label>
-                  <Input
-                    id="startDate"
-                    type="datetime-local"
-                    value={eventData.startDate}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, startDate: e.target.value })
-                    }
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="endDate">End Date</Label>
-                  <Input
-                    id="endDate"
-                    type="datetime-local"
-                    value={eventData.endDate}
-                    onChange={(e) =>
-                      setEventData({ ...eventData, endDate: e.target.value })
-                    }
-                  />
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="startDate">Start Date *</Label>
+                <Input
+                  id="startDate"
+                  type="date"
+                  value={eventData.startDate}
+                  onChange={(e) =>
+                    setEventData({ ...eventData, startDate: e.target.value })
+                  }
+                  required
+                />
               </div>
 
               <div className="space-y-2">
