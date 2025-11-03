@@ -32,7 +32,7 @@ export async function uploadSignedWaiver(
     Key: fileName,
     Body: fileBuffer,
     ContentType: contentType,
-    ACL: 'private', // Make sure signed waivers are private
+    // ACL removed - bucket doesn't allow ACLs, use bucket policies for access control
   })
 
   await s3Client.send(command)
@@ -48,11 +48,12 @@ export async function uploadWaiverPDF(
     Key: fileName,
     Body: fileBuffer,
     ContentType: 'application/pdf',
-    ACL: 'public-read', // Waiver PDFs should be publicly accessible
+    // ACL removed - bucket doesn't allow ACLs
+    // For public access, configure bucket policy or use presigned URLs
   })
 
   await s3Client.send(command)
-  // Return the public URL
+  // Return the URL (will be accessible if bucket policy allows, otherwise use presigned URLs)
   return `https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com/${fileName}`
 }
 
