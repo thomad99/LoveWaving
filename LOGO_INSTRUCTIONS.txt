@@ -1,0 +1,35 @@
+========================================
+HOW TO ADD YOUR LOGO
+========================================
+
+Your logo file has been shared with me.
+
+========================================
+WHAT YOU NEED TO DO:
+========================================
+
+1. Save your logo file to your computer
+2. Copy it to: C:\Users\tomo\OneDrive\My Pet Projects\AI\6.0_Waiver\public\
+3. Name it exactly: logo.png (or logo.svg if it's an SVG)
+
+For the favicon/browser tab icon:
+4. Copy same file to: app/icon.png (or app/icon.svg)
+
+========================================
+FORMATS SUPPORTED:
+========================================
+
+✅ PNG
+✅ SVG (best quality, scalable)
+✅ JPG (not recommended)
+
+========================================
+AFTER ADDING:
+========================================
+
+The header component I created will automatically display your logo on all pages!
+
+Next.js will automatically use app/icon.png as the favicon.
+
+========================================
+

@@ -1,0 +1,105 @@
+========================================
+WAIVER FORM PARSING FEATURE
+========================================
+
+This is a COMPLEX feature! Here's the plan:
+
+========================================
+THE PROBLEM:
+========================================
+
+Users upload PDF waivers with fields like:
+- Name, Skipper, Sailor, Parent
+- Date, Phone, Address
+- Medical info, Emergency contact
+- etc.
+
+Need to automatically detect these and help users fill them!
+
+========================================
+CURRENT STATE:
+========================================
+
+Currently: PDF waivers stored as-is
+No parsing, no form detection
+
+========================================
+THE SOLUTION:
+========================================
+
+OPTION 1: PDF Form Detection (EASIER)
+-------------------------------------
+
+1. Use pdf-lib or pdfjs-dist to parse PDF
+2. Detect AcroForm fields in PDF
+3. Map fields to standard types
+4. Auto-generate form for user
+
+Libraries needed:
+- pdf-lib (parse PDF forms)
+- OR pdfjs-dist (Mozilla's PDF.js)
+
+OPTION 2: OCR + Regex (HARDER)
+--------------------------------
+
+1. Use Tesseract.js or Cloud Vision
+2. Extract text from PDF images
+3. Use regex to find fields
+4. Generate form
+
+Libraries needed:
+- Tesseract.js (local OCR)
+- OR Google Cloud Vision API
+- Regex patterns for each field type
+
+OPTION 3: Manual Field Mapping (SIMPLE)
+---------------------------------------
+
+1. Admin uploads PDF
+2. Admin manually marks fields
+3. Store field locations/mappings
+4. System fills them based on mapping
+
+No parsing needed!
+
+========================================
+RECOMMENDED APPROACH:
+========================================
+
+Start with OPTION 1 (PDF Form Detection)
+- Most PDF waivers use AcroForm
+- Can detect field names/types
+- More reliable than OCR
+- Less complex than manual
+
+========================================
+IMPLEMENTATION STEPS:
+========================================
+
+1. Add pdf-lib dependency
+2. Parse uploaded PDF on admin upload
+3. Extract form fields
+4. Store field structure in database
+5. Generate dynamic form for users
+6. Auto-fill with user profile data
+
+========================================
+DATABASE CHANGES NEEDED:
+========================================
+
+Add to Waiver model:
+- formFields JSON (store detected fields)
+- fieldMappings JSON (map to standard types)
+
+Add to User model:
+- profile JSON (store user data for auto-fill)
+
+========================================
+THIS IS BIG FEATURE:
+========================================
+
+Will take significant development!
+Starting with basic version, then enhance.
+
+========================================
+

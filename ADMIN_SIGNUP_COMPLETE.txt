@@ -1,0 +1,56 @@
+========================================
+ADMIN SIGNUP PAGE CREATED!
+========================================
+
+✅ Complete separate system for admins!
+
+========================================
+WHAT WAS ADDED:
+========================================
+
+1. Admin Signup Page: /admin-signup
+   - Title: "LoveWaving - Admin"
+   - Logo placeholder (LW in purple)
+   - Special admin creation form
+   - Warning about admin privileges
+
+2. Admin Signup API: /api/auth/admin-signup
+   - Creates users with ADMIN role
+   - Separate from regular signup
+
+3. Regular Signup: /auth/signup
+   - Still creates regular USER accounts
+   - No changes needed
+
+========================================
+HOW IT WORKS:
+========================================
+
+REGULAR USERS:
+- Sign up at /auth/signup → USER role
+- Can only sign waivers, view history
+
+ADMINS:
+- Sign up at /admin-signup → ADMIN role  
+- Can create/manage events
+- Full system access
+
+========================================
+TO USE:
+========================================
+
+1. Go to: https://lovewaving.onrender.com/admin-signup
+2. Enter admin details
+3. Account created as ADMIN
+4. Redirected to /admin dashboard
+
+========================================
+NEXT STEP:
+========================================
+
+Add your actual logo!
+- File: public/logo.png (or logo.svg)
+- Will replace the LW placeholder
+
+========================================
+
