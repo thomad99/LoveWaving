@@ -1,0 +1,79 @@
+========================================
+ADMIN vs USER SEPARATION
+========================================
+
+✅ THIS IS ALREADY IMPLEMENTED!
+
+========================================
+HOW IT WORKS:
+========================================
+
+Database has UserRole enum:
+- USER (default for all signups)
+- ADMIN (special privilege)
+
+========================================
+ADMIN ONLY FEATURES:
+========================================
+
+Admin Dashboard (/admin):
+- View all events
+- Create new events
+- Edit events
+- View all signed waivers
+- See statistics
+- Manage everything
+
+Protected by:
+  if (!session || session.user.role !== 'ADMIN') {
+    redirect to sign in
+  }
+
+========================================
+USER ONLY FEATURES:
+========================================
+
+User Dashboard (/dashboard):
+- View active events
+- Sign waivers for events
+- View their signed waiver history
+- See pending events
+
+NO access to:
+- Admin dashboard
+- Create/edit events
+- View other users' waivers
+
+========================================
+API PROTECTION:
+========================================
+
+All /api/admin/* routes check:
+  if (!session || session.user.role !== 'ADMIN') {
+    return 401 Unauthorized
+  }
+
+Users get rejected if they try to call admin APIs!
+
+========================================
+TO MAKE YOURSELF ADMIN:
+========================================
+
+Run this SQL in Render Shell:
+
+UPDATE "User" SET role = 'ADMIN' WHERE email = 'david.thomas@thinworld.net';
+
+Then sign out and back in!
+
+========================================
+CURRENT STATUS:
+========================================
+
+You're currently a USER.
+You can only see available events.
+You can't create events.
+
+Make yourself ADMIN to get full access!
+
+========================================
+
