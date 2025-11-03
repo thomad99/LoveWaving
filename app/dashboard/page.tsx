@@ -40,17 +40,20 @@ export default async function UserDashboard() {
   })
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="border-b bg-white">
+    <div className="min-h-screen bg-slate-900">
+      <nav className="border-b border-slate-800">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-indigo-600">
-            LoveWaving
+          <Link href="/" className="flex items-center gap-3">
+            <div className="w-12 h-12 relative">
+              <img src="/logo.png" alt="LoveWaving Logo" className="w-full h-full object-contain" />
+            </div>
+            <span className="text-2xl font-bold text-white">LoveWaving</span>
           </Link>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600">{session.user.email}</span>
+            <span className="text-sm text-white">{session.user.email}</span>
             {session.user.role === 'ADMIN' && (
               <Link href="/admin">
-                <Button variant="outline" size="sm">Admin</Button>
+                <Button variant="outline" size="sm" className="text-white border-white hover:bg-white hover:text-slate-900">Admin</Button>
               </Link>
             )}
             <SignOutButton size="sm" />
@@ -59,11 +62,11 @@ export default async function UserDashboard() {
       </nav>
 
       <main className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8">My Dashboard</h1>
+        <h1 className="text-4xl font-bold mb-8 text-white">My Dashboard</h1>
 
         {signedWaivers.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4">Signed Waivers</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-white">Signed Waivers</h2>
             <div className="space-y-4">
               {signedWaivers.map((ws) => (
                 <Card key={ws.id}>
@@ -83,7 +86,7 @@ export default async function UserDashboard() {
         )}
 
         <section>
-          <h2 className="text-2xl font-semibold mb-4">Available Events</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-white">Available Events</h2>
           {events.length === 0 ? (
             <Card>
               <CardContent className="pt-6">

@@ -57,11 +57,14 @@ export default async function EventDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="border-b bg-white">
+    <div className="min-h-screen bg-slate-900">
+      <nav className="border-b border-slate-800">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/admin" className="text-2xl font-bold text-indigo-600">
-            LoveWaving
+          <Link href="/admin" className="flex items-center gap-3">
+            <div className="w-12 h-12 relative">
+              <img src="/logo.png" alt="LoveWaving Logo" className="w-full h-full object-contain" />
+            </div>
+            <span className="text-2xl font-bold text-white">LoveWaving</span>
           </Link>
           <SignOutButton />
         </div>
@@ -73,7 +76,7 @@ export default async function EventDetailPage({
             <Link href="/admin">
               <Button variant="outline">← Back</Button>
             </Link>
-            <h1 className="text-4xl font-bold">{event.title}</h1>
+            <h1 className="text-4xl font-bold text-white">{event.title}</h1>
           </div>
           <div className="flex items-center gap-2">
             {event.isActive ? (
@@ -81,7 +84,7 @@ export default async function EventDetailPage({
             ) : (
               <Badge variant="secondary">Inactive</Badge>
             )}
-            <span className="text-gray-600">
+            <span className="text-gray-300">
               {format(new Date(event.startDate), 'PPP')}
             </span>
           </div>
