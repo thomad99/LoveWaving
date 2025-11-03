@@ -82,11 +82,7 @@ export async function GET(
     }
 
     // Convert stream to buffer
-    const chunks: Buffer[] = []
-    for await (const chunk of response.Body) {
-      chunks.push(Buffer.from(chunk))
-    }
-    const pdfBuffer = Buffer.concat(chunks)
+    const pdfBuffer = Buffer.from(await response.Body.transformToByteArray())
 
     // Parse PDF for form fields
     const formFields = await parsePDFForm(pdfBuffer)

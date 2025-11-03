@@ -1,0 +1,47 @@
+========================================
+AWS REGION PARSING FIX ✅
+========================================
+
+Fixed issue with AWS region configuration!
+
+========================================
+THE PROBLEM:
+========================================
+
+Render was setting AWS_REGION as:
+  "US East (N. Virginia) us-east-1"
+
+But AWS SDK expects just the region code:
+  "us-east-1"
+
+This caused errors when uploading PDFs to S3.
+
+========================================
+THE SOLUTION:
+========================================
+
+Added helper function to extract region code from full region name:
+
+  function getRegionCode(): string {
+    const region = process.env.AWS_REGION || 'us-east-1'
+    const match = region.match(/\b([a-z]{2}-[a-z]+-\d+)\b/i)
+    return match ? match[1] : region
+  }
+
+Works with:
+  - "US East (N. Virginia) us-east-1" → "us-east-1"
+  - "us-east-1" → "us-east-1"
+  - Any valid region code
+
+========================================
+FILES UPDATED:
+========================================
+
+1. lib/s3.ts ✅
+2. app/api/admin/waivers/[id]/parse/route.ts ✅
+3. app/api/waivers/[id]/fields/route.ts ✅
+
+All S3 client configurations now use the helper function.
+
+========================================
+
