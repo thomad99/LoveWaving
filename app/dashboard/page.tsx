@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -45,7 +46,7 @@ export default async function UserDashboard() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <div className="w-12 h-12 relative">
-              <img src="/logo.png" alt="LoveWaving Logo" className="w-full h-full object-contain" />
+              <Image src="/logo.png" alt="LoveWaving Logo" fill className="object-contain" />
             </div>
             <span className="text-2xl font-bold text-white">LoveWaving</span>
           </Link>
