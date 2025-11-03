@@ -43,6 +43,8 @@ export default function HealthPage() {
   const [error, setError] = useState<string | null>(null)
   const [debugInfo, setDebugInfo] = useState<any>(null)
   const [debugLoading, setDebugLoading] = useState(false)
+  const [s3TestResult, setS3TestResult] = useState<any>(null)
+  const [s3TestLoading, setS3TestLoading] = useState(false)
 
   const fetchHealth = async () => {
     try {
@@ -88,6 +90,29 @@ export default function HealthPage() {
     }
   }
 
+  const testS3Storage = async () => {
+    setS3TestLoading(true)
+    setS3TestResult(null)
+    try {
+      const response = await fetch('/api/health/s3-test', {
+        method: 'POST',
+      })
+      const data = await response.json()
+      setS3TestResult(data)
+      // Refresh health status after test
+      if (data.success) {
+        fetchHealth()
+      }
+    } catch (err) {
+      setS3TestResult({ 
+        success: false, 
+        error: err instanceof Error ? err.message : 'Failed to test S3 storage' 
+      })
+    } finally {
+      setS3TestLoading(false)
+    }
+  }
+
   useEffect(() => {
     // Don't auto-fetch on load, let user click buttons
     // fetchHealth()
@@ -125,6 +150,9 @@ export default function HealthPage() {
             </Button>
             <Button onClick={testDatabase} disabled={debugLoading} variant="outline">
               {debugLoading ? 'Testing...' : 'Test Database'}
+            </Button>
+            <Button onClick={testS3Storage} disabled={s3TestLoading} variant="outline">
+              {s3TestLoading ? 'Testing...' : 'Test S3 Storage'}
             </Button>
             <Button onClick={fetchDebugInfo} disabled={debugLoading} variant="outline">
               {debugLoading ? 'Loading...' : 'Debug Info'}
@@ -257,7 +285,7 @@ export default function HealthPage() {
               <CardContent>
                 {health.checks.s3.accessible ? (
                   <div className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                       <div>
                         <div className="text-sm text-gray-600 mb-1">Bucket Name</div>
                         <div className="font-mono text-sm">
@@ -268,6 +296,12 @@ export default function HealthPage() {
                         <div className="text-sm text-gray-600 mb-1">Region</div>
                         <div className="font-mono text-sm">
                           {health.checks.s3.stats.region || 'Not configured'}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-600 mb-1">Documents</div>
+                        <div className="text-2xl font-bold text-indigo-600">
+                          {health.checks.s3.stats.documentCount || 0}
                         </div>
                       </div>
                       <div>
@@ -286,6 +320,30 @@ export default function HealthPage() {
                   <div className="text-red-600">
                     <p className="font-semibold">S3 storage inaccessible</p>
                     <p className="text-sm mt-2">{health.checks.s3.error}</p>
+                  </div>
+                )}
+                {s3TestResult && (
+                  <div className={`mt-4 p-4 rounded-lg ${s3TestResult.success ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+                    <div className={`font-semibold ${s3TestResult.success ? 'text-green-800' : 'text-red-800'}`}>
+                      {s3TestResult.success ? '✓ S3 Test Successful' : '✗ S3 Test Failed'}
+                    </div>
+                    {s3TestResult.message && (
+                      <p className={`text-sm mt-1 ${s3TestResult.success ? 'text-green-700' : 'text-red-700'}`}>
+                        {s3TestResult.message}
+                      </p>
+                    )}
+                    {s3TestResult.error && (
+                      <p className="text-sm mt-1 text-red-700">
+                        Error: {s3TestResult.error}
+                      </p>
+                    )}
+                    {s3TestResult.details && (
+                      <div className="mt-2 text-xs text-gray-600">
+                        <pre className="whitespace-pre-wrap font-mono">
+                          {JSON.stringify(s3TestResult.details, null, 2)}
+                        </pre>
+                      </div>
+                    )}
                   </div>
                 )}
               </CardContent>

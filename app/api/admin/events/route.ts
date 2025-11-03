@@ -45,19 +45,25 @@ export async function POST(req: NextRequest) {
 
       // Handle file upload to S3 if provided
       if (waiverFile) {
-        const buffer = Buffer.from(await waiverFile.arrayBuffer())
-        const fileName = `waivers/${event.id}/${waiverFile.name}`
-        pdfUrl = await uploadWaiverPDF(buffer, fileName)
-        
-        // Parse PDF for form fields
         try {
-          const fields = await parsePDFForm(buffer)
-          if (fields && fields.length > 0) {
-            formFields = fields
+          const buffer = Buffer.from(await waiverFile.arrayBuffer())
+          const fileName = `waivers/${event.id}/${waiverFile.name}`
+          pdfUrl = await uploadWaiverPDF(buffer, fileName)
+          console.log('File uploaded successfully to S3:', pdfUrl)
+          
+          // Parse PDF for form fields
+          try {
+            const fields = await parsePDFForm(buffer)
+            if (fields && fields.length > 0) {
+              formFields = fields
+            }
+          } catch (parseError) {
+            console.error('Error parsing PDF form fields:', parseError)
+            // Continue without form fields if parsing fails
           }
-        } catch (parseError) {
-          console.error('Error parsing PDF form fields:', parseError)
-          // Continue without form fields if parsing fails
+        } catch (uploadError: any) {
+          console.error('Error uploading file to S3:', uploadError)
+          throw new Error(`Failed to upload waiver file to S3: ${uploadError.message || uploadError}`)
         }
       }
 
