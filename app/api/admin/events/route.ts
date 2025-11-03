@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
 
     if (waiverTitle) {
       let pdfUrl = null
-      let formFields = null
+      let formFields: any = undefined
 
       // Handle file upload to S3 if provided
       if (waiverFile) {

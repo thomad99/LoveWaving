@@ -1,0 +1,76 @@
+========================================
+PDF DISPLAY FIXES APPLIED ✅
+========================================
+
+Fixed admin and user pages to show waiver documents!
+
+========================================
+WHAT WAS FIXED:
+========================================
+
+1. ADMIN EVENT PAGE ✅
+   - app/admin/events/[id]/page.tsx
+   - Added PDF iframe viewer
+   - Shows PDF when waiver has pdfUrl
+   - Falls back to text content if no PDF
+
+2. USER SIGN PAGE ✅
+   - app/events/[id]/sign/page.tsx
+   - Added fallback link to open PDF in new tab
+   - Added console logging for debugging
+   - Improved user experience with helpful message
+
+========================================
+HOW PDF DISPLAY WORKS:
+========================================
+
+1. When admin uploads PDF:
+   - PDF uploaded to S3 with public-read ACL
+   - Public URL stored in database as pdfUrl
+   - URL format: https://bucket.s3.region.amazonaws.com/path
+
+2. When viewing waiver:
+   - Check if pdfUrl exists
+   - If yes: show in iframe
+   - If no: show text content
+   - Provide fallback link for browser issues
+
+========================================
+DEBUGGING STEPS:
+========================================
+
+If PDF not showing:
+
+1. Check browser console (F12)
+   - Look for CORS errors
+   - Check for blocked iframe
+   - Look for console.log output showing waiver data
+
+2. Try fallback link
+   - Click "Open in new window" link
+   - Verify PDF URL is valid
+   - Check if S3 bucket allows public access
+
+3. Verify database
+   - Confirm pdfUrl is stored correctly
+   - Check S3 bucket name matches env vars
+   - Ensure ACL is public-read
+
+4. Test S3 URL directly
+   - Copy URL from database
+   - Paste in browser
+   - Should display PDF directly
+
+========================================
+KNOWN ISSUES:
+========================================
+
+- PDF parsing with pdf-lib not fully implemented
+- Form fields not yet detected and filled
+- Need to wire smart form UI
+- Database migration pending for formFields column
+
+These will be addressed in next phase.
+
+========================================
+
