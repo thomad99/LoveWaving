@@ -31,17 +31,20 @@ export default async function AdminDashboard() {
   })
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="border-b bg-white">
+    <div className="min-h-screen bg-slate-900">
+      <nav className="border-b border-slate-800">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link href="/" className="text-2xl font-bold text-indigo-600">
-              LoveWaving
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-12 h-12 relative">
+                <img src="/logo.png" alt="LoveWaving Logo" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-2xl font-bold text-white">LoveWaving</span>
             </Link>
-            <span className="text-sm text-gray-500">Admin Dashboard</span>
+            <span className="text-sm text-gray-400">Admin Dashboard</span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-gray-600">{session.user.email}</span>
+            <span className="text-sm text-white">{session.user.email}</span>
             <SignOutButton />
           </div>
         </div>
@@ -49,8 +52,8 @@ export default async function AdminDashboard() {
 
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Admin Dashboard</h1>
-          <p className="text-gray-600">Manage your events and waivers</p>
+          <h1 className="text-4xl font-bold mb-2 text-white">Admin Dashboard</h1>
+          <p className="text-gray-300">Manage your events and waivers</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
