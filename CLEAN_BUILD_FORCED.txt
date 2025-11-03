@@ -1,0 +1,45 @@
+========================================
+CLEAN BUILD FORCED
+========================================
+
+I pushed a version bump to force Render to do a clean build.
+
+========================================
+WHY THIS HAPPENED:
+========================================
+
+The error "Missing 'next-action' header" is usually from:
+- Old cached build files
+- Mixed deployment versions
+- Outdated client-side code calling non-existent server actions
+
+========================================
+WHAT I DID:
+========================================
+
+Bumped version from 1.0.0 to 1.0.1
+This forces Render to rebuild everything fresh.
+
+========================================
+WHAT HAPPENS NEXT:
+========================================
+
+1. Render detects the push
+2. Starts fresh build (no cache)
+3. Installs all dependencies
+4. Generates Prisma client
+5. Creates database tables
+6. Builds Next.js app
+7. Deploys
+
+Wait 5-10 minutes, then check your app!
+
+========================================
+IF STILL BROKEN:
+========================================
+
+Go to Render → Settings → Clear Build Cache
+Then Manual Deploy again.
+
+========================================
+

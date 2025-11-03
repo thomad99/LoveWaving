@@ -1,0 +1,35 @@
+========================================
+WHERE IS THE ERROR?
+========================================
+
+The server action error is blocking everything!
+
+Need to know:
+1. Which page shows the error?
+2. Landing page (/)?
+3. Admin dashboard (/admin)?
+4. Sign in page (/auth/signin)?
+
+========================================
+ALSO CHECK:
+========================================
+
+Render build logs - did npm install work?
+Look for these lines:
+  ✓ Installed qrcode
+  ✓ Installed react-qr-code
+
+If you see errors during install, that's the problem!
+
+========================================
+NEXT STEPS:
+========================================
+
+Tell me:
+1. Which page has the error
+2. Any npm install errors in build logs
+
+Then I'll fix it!
+
+========================================
+
