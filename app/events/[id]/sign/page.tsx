@@ -43,6 +43,8 @@ export default function SignEventPage({ params }: { params: { id: string } }) {
       setWaiver(data.waiver)
       setHasSigned(data.hasSigned)
       
+      console.log('Loaded waiver:', data.waiver) // Debug: Check what waiver data we got
+      
       // Load saved signature if available
       if (data.savedSignature) {
         setSignatureData(data.savedSignature.signatureData)
@@ -194,12 +196,17 @@ export default function SignEventPage({ params }: { params: { id: string } }) {
             <CardContent>
               <div className="prose max-w-none">
                 {waiver.pdfUrl ? (
-                  <div className="border rounded overflow-hidden">
-                    <iframe
-                      src={waiver.pdfUrl}
-                      className="w-full h-[600px] md:h-[800px] border-0"
-                      title="Waiver Document"
-                    />
+                  <div>
+                    <div className="border rounded overflow-hidden mb-4">
+                      <iframe
+                        src={waiver.pdfUrl}
+                        className="w-full h-[600px] md:h-[800px] border-0"
+                        title="Waiver Document"
+                      />
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      Having trouble viewing? <a href={waiver.pdfUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">Open in new window</a>
+                    </div>
                   </div>
                 ) : (
                   <div className="whitespace-pre-wrap text-gray-700 max-h-[600px] overflow-y-auto">
