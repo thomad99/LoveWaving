@@ -1,0 +1,91 @@
+========================================
+VIEW DOCUMENTS & PDF UPLOAD COMPLETE ✅
+========================================
+
+Added ability to view signed documents and upload PDF waivers!
+
+========================================
+WHAT WAS ADDED:
+========================================
+
+1. VIEW SIGNED WAIVERS ✅
+   - "View Document" button on admin event details page
+   - Opens signed PDF in new tab
+   - Uses secure S3 signed URLs (1 hour expiry)
+   - Only admins can view
+
+2. PDF UPLOAD FUNCTIONALITY ✅
+   - Admin can upload PDF/DOC when creating event
+   - Files stored in S3 bucket (public-read)
+   - Displayed in iframe on sign page
+   - Falls back to text content if no PDF
+
+========================================
+HOW IT WORKS:
+========================================
+
+ADMIN SIDE:
+1. Admin uploads PDF when creating event
+2. PDF stored in S3: waivers/{eventId}/{filename}
+3. Public URL saved in database
+4. Users see PDF in iframe when signing
+
+USER SIDE:
+1. User clicks to sign waiver
+2. Sees PDF document in iframe
+3. Enters signature below
+4. Submits to complete
+
+VIEW SIGNED DOCS:
+1. Admin goes to event details
+2. Clicks "View Document" for a signature
+3. Gets temporary S3 URL
+4. Opens PDF in browser
+
+========================================
+FILES CREATED/UPDATED:
+========================================
+
+New:
+- app/api/admin/signed-waivers/[id]/route.ts
+  * Generates S3 signed URLs for viewing documents
+
+- components/admin/view-document-button.tsx
+  * Client component for viewing documents
+
+Updated:
+- lib/s3.ts
+  * Added uploadWaiverPDF() function
+  
+- app/api/admin/events/route.ts
+  * Implemented PDF upload to S3
+  * Removed TODO comment
+
+- app/admin/events/[id]/page.tsx
+  * Added ViewDocumentButton component
+
+========================================
+TECHNICAL DETAILS:
+========================================
+
+Waiver PDFs:
+- Stored as: waivers/{eventId}/{filename}.pdf
+- ACL: public-read (viewable by all)
+- Format: application/pdf
+
+Signed Waivers:
+- Stored as: signed-waivers/{eventId}/{userId}/{sigId}.pdf
+- ACL: private (admin only)
+- URL: Temporary signed URL (1 hour)
+
+========================================
+NEXT: FORM FIELD PARSING
+========================================
+
+Now that PDFs are displayed, we need to:
+1. Parse PDFs to detect form fields
+2. Map to standard fields
+3. Build smart form UI
+
+Ready to continue when you are!
+
