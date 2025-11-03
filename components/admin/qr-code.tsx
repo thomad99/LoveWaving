@@ -68,7 +68,6 @@ export function QRCodeComponent({ eventId, eventTitle }: QRCodeComponentProps) {
             value={joinUrl}
             size={200}
             level="M"
-            includeMargin={true}
           />
         </div>
         
