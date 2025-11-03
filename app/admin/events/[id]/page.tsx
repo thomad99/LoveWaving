@@ -27,7 +27,10 @@ export default async function EventDetailPage({
     include: {
       waiver: true,
       waiverSignatures: {
-        include: {
+        select: {
+          id: true,
+          signedAt: true,
+          signatureStyle: true,
           user: {
             select: {
               name: true,

@@ -29,14 +29,22 @@ export async function GET() {
       orderBy: { startDate: 'asc' },
     })
 
-    // Get user's signed waivers
+    // Get user's signed waivers (exclude signatureData to save memory)
     const signedWaivers = await prisma.waiverSignature.findMany({
       where: {
         userId: session.user.id,
       },
-      include: {
+      select: {
+        id: true,
+        signedAt: true,
         event: {
-          include: {
+          select: {
+            id: true,
+            title: true,
+            description: true,
+            startDate: true,
+            endDate: true,
+            location: true,
             waiver: {
               select: {
                 title: true,
@@ -49,6 +57,7 @@ export async function GET() {
             title: true,
           },
         },
+        eventId: true,
       },
       orderBy: { signedAt: 'desc' },
     })

@@ -27,7 +27,8 @@ export function SignatureCanvas({
 
   const handleEnd = () => {
     if (signaturePadRef.current) {
-      const data = signaturePadRef.current.toDataURL()
+      // Use low quality JPEG to reduce file size (save 90% memory)
+      const data = signaturePadRef.current.toDataURL('image/jpeg', 0.3)
       onSignatureChange(data)
     }
   }
