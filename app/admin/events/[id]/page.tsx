@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { format } from 'date-fns'
+import { QRCodeComponent } from '@/components/admin/qr-code'
 
 export default async function EventDetailPage({
   params,
@@ -161,6 +162,8 @@ export default async function EventDetailPage({
                 </div>
               </CardContent>
             </Card>
+
+            <QRCodeComponent eventId={params.id} eventTitle={event.title} />
 
             <Link href={`/admin/events/${params.id}/edit`}>
               <Button className="w-full">Edit Event</Button>
