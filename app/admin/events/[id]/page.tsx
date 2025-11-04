@@ -11,6 +11,7 @@ import { format } from 'date-fns'
 import { QRCodeComponent } from '@/components/admin/qr-code'
 import { SignOutButton } from '@/components/auth/sign-out-button'
 import { ViewDocumentButton } from '@/components/admin/view-document-button'
+import { DeleteEventButton } from '@/components/admin/delete-event-button'
 
 export default async function EventDetailPage({
   params,
@@ -184,6 +185,7 @@ export default async function EventDetailPage({
             <Link href={`/admin/events/${params.id}/edit`}>
               <Button className="w-full">Edit Event</Button>
             </Link>
+            <DeleteEventButton eventId={event.id} eventTitle={event.title} />
           </div>
         </div>
 
