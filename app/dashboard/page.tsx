@@ -111,10 +111,15 @@ export default function UserDashboard() {
       <nav className="border-b border-slate-800">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.png" alt="LoveWaving Logo" width={48} height={48} className="object-contain" />
+            <Image src="/logo.png" alt="LoveWaving Logo" width={96} height={96} className="object-contain" />
             <span className="text-2xl font-bold text-white">LoveWaving</span>
           </Link>
           <div className="flex items-center gap-4">
+            {session?.user?.name && (
+              <span className="text-white text-sm md:text-base font-medium">
+                {session.user.name}
+              </span>
+            )}
             <Link href="/profile">
               <Button variant="ghost" size="sm" className="text-white hover:bg-slate-800">Profile</Button>
             </Link>

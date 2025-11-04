@@ -37,7 +37,7 @@ export default async function AdminDashboard() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-3">
-              <Image src="/logo.png" alt="LoveWaving Logo" width={48} height={48} className="object-contain" />
+              <Image src="/logo.png" alt="LoveWaving Logo" width={96} height={96} className="object-contain" />
               <span className="text-2xl font-bold text-white">LoveWaving</span>
             </Link>
             <span className="text-sm text-gray-400">Admin Dashboard</span>
